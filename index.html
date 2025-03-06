@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environmental Conservation</title>
+    <!-- Add Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <style>
+        .wi {
+            background-image: url('images/waterwatch.jpg');
+            background-position: center;
+        }
+        .wi2 {
+            background-image: url('images/growfarmer.jpg');
+            background-position: center;
+        }
+        
+        .wi3 {
+            background-image: url('images/wastewise.jpg');
+            background-position: center;
+        }
+        .wi4 {
+            background-image: url('images/spreadtheword.jpg');
+            background-position: center;
+        }
+        .wi5 {
+            background-image: url('images/greenguard.jpg');
+            background-position: center;
+        }
+     </style>
+    <!-- Navigation -->
+    <!-- Keep only one mobile menu button and menu -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="logo">
+                    <img src="images/logo.png" alt="Logo" class="h-12">
+                </div>
+    
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-gray-600 hover:text-green-600 transition-colors duration-300">Home</a>
+                    <a href="#about" class="text-gray-600 hover:text-green-600 transition-colors duration-300">About Us</a>
+                    <a href="#projects" class="text-gray-600 hover:text-green-600 transition-colors duration-300">Projects</a>
+                    <a href="#contact" class="text-gray-600 hover:text-green-600 transition-colors duration-300">Contact</a>
+                    <button class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 transition-colors duration-300">Donate</button>
+                </div>
+    
+                <!-- Single Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-green-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+    
+            <!-- Single Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg absolute top-full left-0 w-full">
+                <div class="flex flex-col py-4 px-6 space-y-3">
+                    <a href="#home" class="text-gray-600 hover:text-green-600 transition-colors duration-300 py-2 px-4 rounded hover:bg-gray-50">Home</a>
+                    <a href="#about" class="text-gray-600 hover:text-green-600 transition-colors duration-300 py-2 px-4 rounded hover:bg-gray-50">About Us</a>
+                    <a href="#projects" class="text-gray-600 hover:text-green-600 transition-colors duration-300 py-2 px-4 rounded hover:bg-gray-50">Projects</a>
+                    <a href="#contact" class="text-gray-600 hover:text-green-600 transition-colors duration-300 py-2 px-4 rounded hover:bg-gray-50">Contact</a>
+                    <button class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 transition-colors duration-300 mt-2">Donate</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+      <!-- Mobile menu icon -->
+      <div class="md:hidden flex items-center">
+        <button id="mobile-menu-toggle" class="text-gray-600 hover:text-green-600">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden bg-white shadow-md absolute top-16 left-0 w-full py-4 px-6 space-y-4">
+      <a class="block text-gray-600 hover:text-green-600" href="#">HOME</a>
+      <a class="block text-gray-600 hover:text-green-600" href="#">WHAT WE DO</a>
+      <a class="block text-gray-600 hover:text-green-600" href="#">WHO WE ARE</a>
+      <a class="block text-gray-600 hover:text-green-600" href="#">GET INVOLVED</a>
+      <a class="block text-gray-600 hover:text-green-600" href="#">PARTNERS</a>
+      <a class="block bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700" href="#">Donate</a>
+    </div>
+  </header>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function toggleMenu() {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                // Trigger reflow
+                mobileMenu.offsetHeight;
+                mobileMenu.classList.remove('-translate-y-2', 'opacity-0');
+            } else {
+                mobileMenu.classList.add('-translate-y-2', 'opacity-0');
+                // Wait for transition before hiding
+                setTimeout(() => {
+                    mobileMenu.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        mobileMenuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleMenu();
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    toggleMenu();
+                }
+            }
+        });
+
+        // Prevent menu from closing when clicking inside it
+        mobileMenu.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // Close menu on window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768 && !mobileMenu.classList.contains('hidden')) {
+                toggleMenu();
+            }
+        });
+    });
+  </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Environmental Initiative</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container" style="margin-top: 80px;">
+        <div class="content">
+            <div class="text-content">
+                <h1>
+                    <span class="highlight">Reserve, Reduce, &</span><br>
+                    <span class="highlight">Restrict</span> the impact<br>
+                    of urbanization
+                </h1>
+                <p>Over the years, Siruthuli has spearheaded a public movement to address the environmental issues facing the Coimbatore region, with Major focus on water.</p>
+                <button class="donate-btn">DONATE</button>
+            </div>
+            <div class="image-container">
+                <div class="image-wrapper">
+                    <img src="images/Landing1.jpg" alt="River view" class="river-img">
+                </div>
+            </div>
+        </div>
+        <div class="decorative-elements">
+            <img src="images/butterfly.png" alt="Decorative butterfly" class="butterfly butterfly-1" style="width: 120px; height: auto; position: absolute; top: 15%; left: 40%; z-index: 10; margin: 20px;">
+            <img src="images/butterfly.png" alt="Decorative butterfly" class="butterfly butterfly-2" style="width: 120px; height: auto; position: absolute; top: 70%; right: 70%; z-index: 10; transform: scale(1.2); transition: transform 0.3s ease-in-out; margin: 20px;" onmouseover="this.style.transform='scale(1.4)'" onmouseout="this.style.transform='scale(1.2)'">
+     </div>
+    </div>
+</body>
+</html>
+<!-- Focus Areas -->
+    <!--element_selector--> 
+    <div class="flex justify-center mt-20 mb-20">
+        <img alt="Nature and water conservation" class="rounded-lg" src="/Users/darshan/Desktop/Siruthuli Website/Images/IMAGESEC.png"/>
+    </div>
+    <!-- Focus Area -->
+<section class="py-20 relative" style="background-color: #55B76B;">
+    <img src="images/butterflywhite.png" alt="Decorative leaf" class="absolute right-10 top-10 w-32 h-auto">
+    <img src="images/butterflywhite.png" alt="Decorative leaf" class="absolute left-10 top-25 w-24 h-auto transform scale-x-[-1]">
+    <div class="container mx-auto text-center px-4">
+        <h2 class="text-4xl font-bold text-white mb-6">
+            FOCUS AREA
+        </h2>
+        <p class="mt-6 text-white max-w-3xl mx-auto text-xl">
+            Create a lasting impact to the environment through community-led collective approach focussing on 5 pillars
+        </p>
+        <div class="mt-12 flex flex-wrap justify-center gap-8">
+            <div class="w-48 h-48 rounded-full flex items-center justify-center wi transition-all duration-300 hover:grayscale" style="background-color: rgba(85, 183, 107, 0.8);">
+                <span class="text-white font-bold text-xl">
+                    Water Watch
+                </span>
+            </div>
+            <div class="w-48 h-48 rounded-full flex items-center justify-center wi2 transition-all duration-300 hover:grayscale" style="background-color: rgba(85, 183, 107, 0.8);">
+                <span class="text-white font-bold text-xl">
+                    Grow the Farmer
+                </span>
+            </div>
+            <div class="w-48 h-48 rounded-full flex items-center justify-center wi3 transition-all duration-300 hover:grayscale" style="background-color: rgba(85, 183, 107, 0.8);">
+                <span class="text-white font-bold text-xl">
+                    Waste Wise
+                </span>
+            </div>
+            <div class="w-48 h-48 rounded-full flex items-center justify-center wi4 transition-all duration-300 hover:grayscale" style="background-color: rgba(85, 183, 107, 0.8);">
+                <span class="text-white font-bold text-xl">
+                    Spread the Word
+                </span>
+            </div>
+            <div class="w-48 h-48 rounded-full flex items-center justify-center wi5 transition-all duration-300 hover:grayscale" style="background-color: rgba(85, 183, 107, 0.8);">
+                <span class="text-white font-bold text-xl">
+                    Green Guard
+                </span>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Featured Projects -->
+<div class="container mx-auto text-center">
+  <h2 class="text-3xl font-bold text-green-600">
+    Featured Projects
+  </h2>
+  <div class="mt-8 flex flex-wrap justify-center space-x-4 space-y-4 sm:space-y-0">
+    <button class="project-btn bg-green-600 text-white px-4 py-2 rounded w-full sm:w-auto" data-category="green-guard">
+      Green Guard
+    </button>
+    <button class="project-btn bg-gray-200 text-gray-600 px-4 py-2 rounded w-full sm:w-auto" data-category="spread-word">
+      Spread the Word
+    </button>
+    <button class="project-btn bg-gray-200 text-gray-600 px-4 py-2 rounded w-full sm:w-auto" data-category="grow-farmer">
+      Grow the Farmer
+    </button>
+    <button class="project-btn bg-gray-200 text-gray-600 px-4 py-2 rounded w-full sm:w-auto" data-category="waste-wise">
+      Waste Wise
+    </button>
+    <button class="project-btn bg-gray-200 text-gray-600 px-4 py-2 rounded w-full sm:w-auto" data-category="water-watch">
+      Water Watch
+    </button>
+  </div>
+
+<div id="projects-grid" class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <!-- Water Watch Projects -->
+    <div class="project-card" data-category="water-watch">
+      <div class="bg-white shadow-lg rounded-lg p-4 transform transition duration-300 hover:scale-105 h-full">
+        <div class="aspect-w-16 aspect-h-9 mb-4">
+          <img alt="Rain Water Harvesting" class="rounded-lg w-full h-48 object-cover" src="images/rainwaterharvesting.jpg"/>
+        </div>
+        <div class="flex flex-col h-[calc(100%-12rem)]">
+          <h3 class="mt-4 text-lg font-bold text-green-600">Rain Water Harvesting</h3>
+          <p class="mt-2 text-gray-600 flex-grow">A drop harvested is a crop harvested, saving the planet one drop at a time!</p>
+        </div>
+      </div>
+    </div>
+    <div class="project-card" data-category="water-watch">
+      <div class="bg-white shadow-lg rounded-lg p-4 transform transition duration-300 hover:scale-105 h-full">
+        <div class="aspect-w-16 aspect-h-9 mb-4">
+          <img alt="Lake Restoration" class="rounded-lg w-full h-48 object-cover" src="images/lakerestoration.jpeg"/>
+        </div>
+        <div class="flex flex-col h-[calc(100%-12rem)]">
+          <h3 class="mt-4 text-lg font-bold text-green-600">Lake Restoration</h3>
+          <p class="mt-2 text-gray-600 flex-grow">Reviving our water bodies for a sustainable future.</p>
+        </div>
+      </div>
+    </div>
+    <div class="project-card" data-category="water-watch">
+      <div class="bg-white shadow-lg rounded-lg p-4 transform transition duration-300 hover:scale-105 h-full">
+        <div class="aspect-w-16 aspect-h-9 mb-4">
+          <img alt="Water Conservation" class="rounded-lg w-full h-48 object-cover" src="images/waterconversation.jpeg"/>
+        </div>
+        <div class="flex flex-col h-[calc(100%-12rem)]">
+          <h3 class="mt-4 text-lg font-bold text-green-600">Water Conservation</h3>
+          <p class="mt-2 text-gray-600 flex-grow">Implementing innovative solutions for water preservation.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Green Guard Projects -->
+    <div class="project-card" data-category="green-guard">
+      <div class="bg-white shadow-lg rounded-lg p-4 transform transition duration-300 hover:scale-105 h-full">
+        <div class="aspect-w-16 aspect-h-9 mb-4">
+          <img alt="Kumaran Kuttai" class="rounded-lg w-full h-48 object-cover" src="images/kumarankuttai.jpg"/>
+        </div>
+        <div class="flex flex-col h-[calc(100%-12rem)]">
+          <h3 class="mt-4 text-lg font-bold text-green-600">Kumaran Kuttai</h3>
+          <p class="mt-2 text-gray-600 flex-grow">One of them had drilled boreholes in 17 locations on his 2.5 acre land holding.</p>
+        </div>
+      </div>
+    </div>
+    <div class="project-card" data-category="green-guard">
+      <div class="bg-white shadow-lg rounded-lg p-4 transform transition duration-300 hover:scale-105 h-full">
+        <div class="aspect-w-16 aspect-h-9 mb-4">
+          <img alt="Urban Forests" class="rounded-lg w-full h-48 object-cover" src="images/urbanforest.jpg"/>
+        </div>
+        <div class="flex flex-col h-[calc(100%-12rem)]">
+          <h3 class="mt-4 text-lg font-bold text-green-600">Urban Forests</h3>
+          <p class="mt-2 text-gray-600 flex-grow">Creating green spaces in urban areas for better air quality.</p>
+        </div>
+      </div>
+    </div>
+    <div class="project-card" data-category="green-guard">
+      <div class="bg-white shadow-lg rounded-lg p-4 transform transition duration-300 hover:scale-105 h-full">
+        <div class="aspect-w-16 aspect-h-9 mb-4">
+          <img alt="Tree Plantation" class="rounded-lg w-full h-48 object-cover" src="images/vilankuruchi.jpg"/>
+        </div>
+        <div class="flex flex-col h-[calc(100%-12rem)]">
+          <h3 class="mt-4 text-lg font-bold text-green-600">Tree Plantation</h3>
+          <p class="mt-2 text-gray-600 flex-grow">Mass tree plantation drives for a greener tomorrow.</p>
+        </div>
+      </div>
+    </div>
+    <!-- Grow Farmer Projects -->
+    <div class="project-card" data-category="grow-farmer">
+      <div class="bg-white shadow-lg rounded-lg p-4 transform transition duration-300 hover:scale-105 h-full">
+        <div class="aspect-w-16 aspect-h-9 mb-4">
+          <img alt="Nandanagiri" class="rounded-lg w-full h-48 object-cover" src="images/nandanam.jpg"/>
+        </div>
+        <div class="flex flex-col h-[calc(100%-12rem)]">
+          <h3 class="mt-4 text-lg font-bold text-green-600">Nandanagiri</h3>
+          <p class="mt-2 text-gray-600 flex-grow">They specifically requested for rejuvenating the Nandangarai stream.</p>
+        </div>
+      </div>
+    </div>
+    <div class="project-card" data-category="grow-farmer">
+      <div class="bg-white shadow-lg rounded-lg p-4 transform transition duration-300 hover:scale-105 h-full">
+        <div class="aspect-w-16 aspect-h-9 mb-4">
+          <img alt="Organic Farming" class="rounded-lg w-full h-48 object-cover" src="images/hopevanam.jpg"/>
+        </div>
+        <div class="flex flex-col h-[calc(100%-12rem)]">
+          <h3 class="mt-4 text-lg font-bold text-green-600">Organic Farming</h3>
+          <p class="mt-2 text-gray-600 flex-grow">Promoting sustainable agricultural practices.</p>
+        </div>
+      </div>
+    </div>
+    <div class="project-card" data-category="grow-farmer">
+      <div class="bg-white shadow-lg rounded-lg p-4 transform transition duration-300 hover:scale-105 h-full">
+        <div class="aspect-w-16 aspect-h-9 mb-4">
+          <img alt="Farmer Training" class="rounded-lg w-full h-48 object-cover" src="images/rainwaterharvesting.jpg"/>
+        </div>
+        <div class="flex flex-col h-[calc(100%-12rem)]">
+          <h3 class="mt-4 text-lg font-bold text-green-600">Farmer Training</h3>
+          <p class="mt-2 text-gray-600 flex-grow">Empowering farmers with modern agricultural knowledge.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Waste Wise Projects -->
+    <div class="project-card" data-category="waste-wise">
+      <div class="bg-white shadow-lg rounded-lg p-4 transform transition duration-300 hover:scale-105 h-full">
+        <div class="aspect-w-16 aspect-h-9 mb-4">
+          <img alt="Waste Management" class="rounded-lg w-full h-48 object-cover" src="images/gardening.jpg"/>
+        </div>
+        <div class="flex flex-col h-[calc(100%-12rem)]">
+          <h3 class="mt-4 text-lg font-bold text-green-600">Waste Management</h3>
+          <p class="mt-2 text-gray-600 flex-grow">Innovative solutions for waste reduction and recycling.</p>
+        </div>
+      </div>
+    </div>
+    <div class="project-card" data-category="waste-wise">
+      <div class="bg-white shadow-lg rounded-lg p-4 transform transition duration-300 hover:scale-105 h-full">
+        <div class="aspect-w-16 aspect-h-9 mb-4">
+          <img alt="Composting" class="rounded-lg w-full h-48 object-cover" src="images/composting.jpg"/>
+        </div>
+        <div class="flex flex-col h-[calc(100%-12rem)]">
+          <h3 class="mt-4 text-lg font-bold text-green-600">Composting</h3>
+          <p class="mt-2 text-gray-600 flex-grow">Converting organic waste into valuable resources.</p>
+        </div>
+      </div>
+    </div>
+    <div class="project-card" data-category="waste-wise">
+      <div class="bg-white shadow-lg rounded-lg p-4 transform transition duration-300 hover:scale-105 h-full">
+        <div class="aspect-w-16 aspect-h-9 mb-4">
+          <img alt="Plastic Free" class="rounded-lg w-full h-48 object-cover" src="images/plastic.png"/>
+        </div>
+        <div class="flex flex-col h-[calc(100%-12rem)]">
+          <h3 class="mt-4 text-lg font-bold text-green-600">Plastic Free Initiative</h3>
+          <p class="mt-2 text-gray-600 flex-grow">Working towards a plastic-free environment.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spread the Word Projects -->
+    <div class="project-card" data-category="spread-word">
+      <div class="bg-white shadow-lg rounded-lg p-4 transform transition duration-300 hover:scale-105 h-full">
+        <div class="aspect-w-16 aspect-h-9 mb-4">
+          <img alt="Environmental Education" class="rounded-lg w-full h-48 object-cover" src="images/meeting.jpg"/>
+        </div>
+        <div class="flex flex-col h-[calc(100%-12rem)]">
+          <h3 class="mt-4 text-lg font-bold text-green-600">Environmental Education</h3>
+          <p class="mt-2 text-gray-600 flex-grow">Spreading awareness about environmental conservation.</p>
+        </div>
+      </div>
+    </div>
+    <div class="project-card" data-category="spread-word">
+      <div class="bg-white shadow-lg rounded-lg p-4 transform transition duration-300 hover:scale-105 h-full">
+        <div class="aspect-w-16 aspect-h-9 mb-4">
+          <img alt="Community Outreach" class="rounded-lg w-full h-48 object-cover" src="images/gardening.jpg"/>
+        </div>
+        <div class="flex flex-col h-[calc(100%-12rem)]">
+          <h3 class="mt-4 text-lg font-bold text-green-600">Community Outreach</h3>
+          <p class="mt-2 text-gray-600 flex-grow">Engaging communities in environmental initiatives.</p>
+        </div>
+      </div>
+    </div>
+    <div class="project-card" data-category="spread-word">
+      <div class="bg-white shadow-lg rounded-lg p-4 transform transition duration-300 hover:scale-105 h-full">
+        <div class="aspect-w-16 aspect-h-9 mb-4">
+          <img alt="Youth Programs" class="rounded-lg w-full h-48 object-cover" src="images/meeting2.png"/>
+        </div>
+        <div class="flex flex-col h-[calc(100%-12rem)]">
+          <h3 class="mt-4 text-lg font-bold text-green-600">Youth Programs</h3>
+          <p class="mt-2 text-gray-600 flex-grow">Empowering young minds for environmental stewardship.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a class="mt-8 inline-block bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700" href="#">
+    View More
+  </a>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const buttons = document.querySelectorAll('.project-btn');
+  const projects = document.querySelectorAll('.project-card');
+
+  // Show only green-guard projects initially
+  projects.forEach(project => {
+    if (project.dataset.category !== 'green-guard') {
+      project.style.display = 'none';
+    }
+  });
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Reset all buttons
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-green-600', 'text-white');
+        btn.classList.add('bg-gray-200', 'text-gray-600');
+      });
+
+      // Highlight clicked button
+      button.classList.remove('bg-gray-200', 'text-gray-600');
+      button.classList.add('bg-green-600', 'text-white');
+
+      const category = button.dataset.category;
+
+      // Filter projects
+      projects.forEach(project => {
+        if (category === project.dataset.category) {
+          project.style.display = 'block';
+          project.classList.add('animate-fadeIn');
+        } else {
+          project.style.display = 'none';
+        }
+      });
+    });
+  });
+});
+</script>
+
+<style>
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+</style>
+</section>
+<!-- Story Behind Us Section -->
+<section class="bg-green-500 py-16 relative overflow-hidden">
+    <!-- Decorative Butterfly -->
+    <img src="images/butterfly.png" alt="" class="absolute top-10 right-10 w-32 h-auto opacity-50">
+    
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center gap-8">
+            <!-- Left Side - Image and Logo -->
+            <div class="md:w-1/2 relative">
+                <div class="rounded-lg overflow-hidden">
+                    <img src="images/thestorybehindus.jpg" alt="Lake view" class="w-full h-auto rounded-lg">
+                </div>
+                <div class="absolute top-4 left-4">
+                    <img src="images/sirithulisupport.png" alt="Siruthuli Logo" class="w-48 h-48 object-contain absolute -top-4 -left-4">
+                </div>
+            </div>
+
+            <!-- Right Side - Content -->
+            <div class="md:w-1/2 text-white relative">
+                <h2 class="text-4xl font-bold mb-6">THE STORY BEHIND US....</h2>
+                <p class="text-lg mb-8">
+                    Siruthuli has been a people's movement since its inception in 2003 with the focus to Clean Kovai and Green Kovai and has worked relentlessly to restore water bodies, increase the green cover in the region that we have lost due to urbanization, create awareness among school children and citizens and manage both solid and liquid waste.
+                </p>
+
+                <!-- Statistics -->
+                <div class="grid grid-cols-3 gap-8 text-center">
+                    <div>
+                        <h3 class="text-5xl font-bold mb-2">30 +</h3>
+                        <p class="text-base">Water bodies desilted</p>
+                    </div>
+                    <div>
+                        <h3 class="text-5xl font-bold mb-2">8M</h3>
+                        <p class="text-base">Storage capacity enhanced</p>
+                    </div>
+                    <div>
+                        <h3 class="text-5xl font-bold mb-2">750 +</h3>
+                        <p class="text-base">Rain water harvesting structures created</p>
+                    </div>
+                </div>
+                <!-- Added Bottom Right Image -->
+<img src="images/leaf.png" alt="Decorative leaf" class="absolute bottom-200 right-0 w-full h-32 object-cover opacity-80">
+            </div>
+        </div>
+    </div>
+</section>
+  <!-- Testimonials -->
+  <section class="bg-gray-50 py-16">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+            <h2 class="text-3xl font-bold text-green-600">Our Testimonials</h2>
+            <div class="flex space-x-4 mt-4 md:mt-0">
+                <button class="text-gray-600 hover:text-green-600" id="prev-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+                <button class="text-gray-600 hover:text-green-600" id="next-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <div class="flex overflow-x-auto gap-6 pb-6 hide-scrollbar">
+            <!-- Testimonial 1 -->
+            <div class="flex-none w-80 bg-white rounded-xl shadow-lg p-6 space-y-4">
+                <img class="w-24 h-24 rounded-full mx-auto object-cover" src="images/jeyapal.png" alt="Jeyapal">
+                <div class="text-center">
+                    <h3 class="text-lg font-semibold text-gray-800">Jeyapal</h3>
+                    <p class="text-gray-600">The pond in our location had filled up with debris. Siruthuli along with Bosch, cleaned up and desilted the pond...</p>
+                </div>
+                <div class="flex justify-center space-x-1">
+                    <span class="text-yellow-400">★</span>
+                    <span class="text-yellow-400">★</span>
+                    <span class="text-yellow-400">★</span>
+                    <span class="text-yellow-400">★</span>
+                    <span class="text-gray-400">☆</span>
+                </div>
+            </div>
+        
+            <!-- Testimonial 2 -->
+            <div class="flex-none w-80 bg-white rounded-xl shadow-lg p-6 space-y-4">
+                <img class="w-24 h-24 rounded-full mx-auto object-cover" src="images/sylendrababu.png" alt="SylendraBabu">
+                <div class="text-center">
+                    <h3 class="text-lg font-semibold text-gray-800">Sylendra Babu</h3>
+                    <p class="text-gray-600">In my tenure as ADGP of Prisons in 2017, thanks to the eco-conscious efforts of Siruthuli the once barren neglected land inside the Central Prison has become a green forest with close to 11500 trees.</p>
+                </div>
+                <div class="flex justify-center space-x-1">
+                    <span class="text-yellow-400">★</span>
+                    <span class="text-yellow-400">★</span>
+                    <span class="text-yellow-400">★</span>
+                    <span class="text-yellow-400">★</span>
+                    <span class="text-gray-400">☆</span>
+                </div>
+            </div>
+        
+            <!-- Testimonial 3 -->
+            <div class="flex-none w-80 bg-white rounded-xl shadow-lg p-6 space-y-4">
+                <img class="w-24 h-24 rounded-full mx-auto object-cover" src="images/arumugakavudar.png" alt="Arumugakavudar">
+                <div class="text-center">
+                    <h3 class="text-lg font-semibold text-gray-800">Arumugakavudar</h3>
+                    <p class="text-gray-600">In my tenure as ADGP of Prisons in 2017, thanks to the eco-conscious efforts of Siruthuli the once barren neglected land inside the Central Prison has become a green forest with close to 11500 trees.</p>
+                </div>
+                <div class="flex justify-center space-x-1">
+                    <span class="text-yellow-400">★</span>
+                    <span class="text-yellow-400">★</span>
+                    <span class="text-yellow-400">★</span>
+                    <span class="text-yellow-400">★</span>
+                    <span class="text-gray-400">☆</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+    <!-- Contact Form -->
+    <section class="bg-green-600 py-16 px-4">
+        <div class="container mx-auto max-w-6xl flex flex-col md:flex-row items-center justify-center gap-12">
+            <div class="md:w-1/3">
+                <img alt="Volunteering" 
+                    class="rounded-lg shadow-lg w-full max-w-md mx-auto h-[300px] object-cover" 
+                    src="images/volunteer.jpg"/>
+                <img alt="Decorative leaf" 
+                    class="absolute bottom-0 right-0 w-32 h-auto"
+                    src="IMAGES/sirithulisupport.png"/>
+            </div>
+            <div class="md:w-1/2 mt-8 md:mt-0 text-center md:text-left max-w-md">
+                <h2 class="text-3xl font-bold text-white">Join As A Volunteer</h2>
+                <p class="mt-4 text-white">Join us as a volunteer and make a difference! Sign up today and be a part of the change.</p>
+                <form class="mt-8 space-y-4">
+                    <input class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-white bg-white-500 text-black placeholder-black-100" 
+                        placeholder="Enter your name" 
+                        type="text"/>
+                    <input class="w-full px-4 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-white bg-white-500 text-black placeholder-black-100" 
+                        placeholder="Enter your e-mail" 
+                        type="email"/>
+                    <button class="w-full bg-white text-green-600 px-6 py-3 rounded hover:bg-green-100 transition duration-300 font-bold" 
+                        type="submit">JOIN</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+ 
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between">
+         <div>
+          <h3 class="text-lg font-bold text-white">
+           Siruthuli
+          </h3>
+          <p class="mt-2 text-white">
+           Clean Kovai. Green Kovai.
+          </p>
+          <p class="mt-2 text-white">
+           © Siruthuli, all rights reserved 2025
+          </p>
+         </div>
+         <div>
+          <h3 class="text-lg font-bold text-white">
+           Pages
+          </h3>
+          <ul class="mt-2 space-y-2">
+           <li>
+            <a class="hover:underline text-white" href="#">
+             Home
+            </a>
+           </li>
+           <li>
+            <a class="hover:underline text-white" href="#">
+             About us
+            </a>
+           </li>
+           <li>
+            <a class="hover:underline text-white" href="#">
+             Contact us
+            </a>
+           </li>
+           <li>
+            <a class="hover:underline text-white" href="#">
+             Terms &amp; services
+            </a>
+           </li>
+          </ul>
+         </div>
+         <div>
+          <h3 class="text-lg font-bold text-white">
+           Contact us
+          </h3>
+          <p class="mt-2 text-white">
+           +91 123456789
+          </p>
+          <p class="mt-2 text-white">
+           info@siruthuli.com
+          </p>
+          <p class="mt-2 text-white">
+           102-Complex, Xyz Road, City name, State, 136458
+          </p>
+         </div>
+        </div>
+       </footer>
+      </body>
+     </html></html>
